@@ -1,0 +1,56 @@
+
+
+#include<stdio.h>
+
+int sec_largest(int[],int);
+
+int main()
+{
+	int i,size,ret;
+	printf("Enter the size of the array :");
+	scanf("%d",&size);
+
+	int arr[size];
+	printf("Enter array elements: ");
+    for(i=0;i<size;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+
+	ret = sec_largest(arr,size);
+
+    printf("Second largest element of the array is %d\n",ret);
+}
+
+int sec_largest(int arr[],int size)
+{
+	int i,temp,sec,ret;
+	temp=arr[0];
+	for(i=0;i<(size-1);i++)
+	{
+		if(temp>=arr[i+1])
+		{
+			temp=temp;
+		}
+		else
+		{
+			temp=arr[i+1];
+		}
+	}
+	sec=arr[0];
+	for(i=0;i<(size-1);i++)
+	{
+		if(sec<temp && sec>arr[i+1] || arr[i+1]==temp)
+		{
+			sec=sec;
+			continue;
+		}
+		else
+		{
+			sec=arr[i+1];
+		}
+	}
+	ret=sec;
+
+	return ret;
+}
